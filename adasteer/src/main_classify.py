@@ -10,8 +10,10 @@ from openai import OpenAI
 
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),  # 读取 API Key
-    base_url = "https://api.chatanywhere.tech/v1"
+    base_url=os.environ.get("OPENAI_BASE_URL", "https://api.chatanywhere.tech/v1")
 )
+
+MODEL_NAME = os.environ.get("OPENAI_MODEL", "gpt-4o")
 
 @dataclass
 class Arguments:
@@ -36,7 +38,7 @@ def classify_with_gpt(question, answer):
     prompt = PROMPT_TEMPLATE.format(question=question, answer=answer)
     try:
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model=MODEL_NAME,
             messages=[
                 {"role": "system", "content": "You are an expert classifier."},
                 {"role": "user", "content": prompt}
