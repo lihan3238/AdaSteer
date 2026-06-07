@@ -1,0 +1,45 @@
+{
+  "verified_at": "2026-06-04T11:04:33Z",
+  "spec_kit_version": "0.9.3",
+  "superpowers_version": "5.1.0",
+  "codex_cli_version": "0.137.0",
+  "claude_code_version": "2.1.162",
+  "bridge_version": "1.0.2",
+  "platforms": [
+    {
+      "name": "Linux bash",
+      "script_flavor": "sh",
+      "status": "passed",
+      "spec_kit_version": "0.9.3",
+      "evidence": "specs/013-v1-0-release-hardening/sandbox-verification.md#linux-bash",
+      "notes": "WSL bash validated full bash smoke suite and an independent release-artifact sandbox bridge cycle."
+    },
+    {
+      "name": "Windows PowerShell",
+      "script_flavor": "ps",
+      "status": "passed",
+      "spec_kit_version": "0.8.10",
+      "evidence": "specs/013-v1-0-release-hardening/sandbox-verification.md#windows-powershell",
+      "notes": "Native Windows PowerShell 5.1 validated focused smoke and an independent release-artifact sandbox bridge cycle. Windows Spec Kit CLI 0.8.10 required PYTHONUTF8=1 for clean Unicode install output."
+    }
+  ],
+  "agents": [
+    {
+      "name": "Codex",
+      "version": "0.137.0",
+      "status": "passed",
+      "platform": "Linux bash / WSL2",
+      "evidence": "../test_specify_superpower/v1-0-linux-20260604T072552Z/.specify/bridge-verification/codex-v1.0.0-rc.md",
+      "notes": "Bounded noninteractive Codex verification exercised manifest inspection, status/readiness, guard, handoff transitions, and evidence writing inside the sandbox."
+    },
+    {
+      "name": "Claude Code",
+      "version": "2.1.162",
+      "status": "passed",
+      "platform": "Linux bash / WSL2",
+      "evidence": "../test_specify_superpower/v1-0-linux-20260604T072552Z/.specify/bridge-verification/claude-v1.0.0-rc.md",
+      "notes": "Bounded noninteractive Claude Code verification exercised manifest inspection, status/readiness, guard, handoff transitions, and evidence writing inside the sandbox."
+    }
+  ],
+  "notes": "v1.0.2 is a documentation, social-card, and release-submission polish patch on the v1.0.0 stable protocol evidence: version metadata is synchronized, release readiness checks namespace/catalog/package drift, Linux and Windows package sandbox rows passed, and bounded real Codex plus Claude Code rows passed. Existing guard, handoff, archive, status, execute, command count, hook count, and extension runtime floor remain compatible with the 0.7.2 baseline."
+}

@@ -8,3 +8,6 @@
 results/
 *.DS_Store
 
+# speckit extension cache (transient downloads)
+.specify/extensions/.cache/
+
